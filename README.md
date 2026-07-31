@@ -12,7 +12,7 @@ A simple command-line research assistant built with LangChain and Google's Gemin
 3. Parses the agent's final answer into a structured response with `topic`, `summary`, `source`, and `tools_used` fields, using Pydantic for validation
 ## Requirements
  
-- Python 3.9+
+- Python 3.9+, Python 3.12.10 is best
 - A Google AI API key (for Gemini) — see [Google AI Studio](https://aistudio.google.com/) to get one
 Install dependencies:
  
