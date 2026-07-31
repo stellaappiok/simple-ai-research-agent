@@ -47,7 +47,6 @@ The agent will search, reason about what it finds, and print a structured summar
 ├── main.py              # Entry point: sets up the LLM, prompt, and agent executor
 ├── tools.py              # Tool definitions: web search, Wikipedia, save-to-file
 ├── requirements.txt      # Python dependencies
-└── research_output.txt   # Created automatically when the save tool is used
 ```
  
 ## How it works
