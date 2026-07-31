@@ -1,2 +1,5 @@
 .env
 mymain.py
+.venv/
+__pycache__/
+.vscode/
