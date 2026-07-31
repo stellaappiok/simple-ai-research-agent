@@ -6,3 +6,4 @@ python-dotenv
 pydantic
 wikipedia
 duckduckgo-search
+rich
