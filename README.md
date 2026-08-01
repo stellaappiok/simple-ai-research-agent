@@ -63,7 +63,11 @@ python main.py
 6. When prompted, type your research question, e.g.:
 
 ```
-What can I help you research? Recent advances in solid-state batteries
+Hey, I am Jarvis, your personal AI Research Agent
+Ask me anything.
+Type exit or quit to leave.
+
+>>> What are the recent advances in solid-state batteries ?
 ```
 
 The agent will search, reason about what it finds, and print a structured summary.
