@@ -52,6 +52,3 @@ The `try`/`except` block in `research()` handles the fact that agent output isn'
 - Look into LangChain's memory modules to add multi-turn conversation support.
 - Explore LangGraph (LangChain's newer agent-orchestration library) once this pattern feels solid — it's the natural next step for more complex, multi-step agent workflows.
 
-## License
-
-[MIT](LICENSE)
