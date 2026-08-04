@@ -6,10 +6,10 @@ Thanks for considering a contribution. This is a small project, so even modest i
 
 - **Fix a bug.** If the agent errors out on a particular kind of query, or the output parsing fails on a response shape it doesn't currently handle, that's a great first PR.
 - **Add a tool.** New LangChain tools (e.g. an arXiv search, a news API, a calculator) following the pattern already established in `tools.py`.
-- **Add LLM provider support.** The dependencies already include LangChain integrations for OpenAI and Anthropic that aren't wired up yet — adding a way to switch providers would be a valuable contribution.
-- **Improve error handling.** The main loop catches errors broadly so it doesn't crash, but missing API keys, network failures, and malformed agent output all currently produce the same generic message — more specific handling would help.
-- **Add real conversation memory.** The prompt already has a `chat_history` placeholder, but it's never populated — wiring up actual multi-turn memory so follow-up questions can reference earlier answers is a meaningful contribution.
-- **Add tests.** There's no test suite yet — unit tests for the tools in `tools.py` or the output-parsing logic in `main.py` are very welcome.
+- **Add LLM provider support.** The dependencies already include LangChain integrations for OpenAI and Anthropic that aren't wired up yet, adding a way to switch providers would be a valuable contribution.
+- **Improve error handling.** The main loop catches errors broadly so it doesn't crash, but missing API keys, network failures, and malformed agent output all currently produce the same generic message, more specific handling would help.
+- **Add real conversation memory.** The prompt already has a `chat_history` placeholder, but it's never populated, wiring up actual multi-turn memory so follow-up questions can reference earlier answers is a meaningful contribution.
+- **Add tests.** There's no test suite yet, unit tests for the tools in `tools.py` or the output-parsing logic in `main.py` are very welcome.
 
 ## Before you start
 
@@ -28,7 +28,7 @@ For anything beyond a small fix (a new tool, provider support, a UI), open an is
 
 - Follow [PEP 8](https://peps.python.org/pep-0008/).
 - New tools should follow the existing pattern in `tools.py`: a plain function plus a `Tool(...)` wrapper with a clear `name` and `description` (the agent uses the description to decide when to call it, so be specific).
-- Keep `.env`-based secrets out of commits — never hardcode API keys.
+- Keep `.env`-based secrets out of commits, never hardcode API keys.
 
 ## Commit convention
 
