@@ -25,16 +25,19 @@ LLMs return free text by default. The `ResearchResponse` Pydantic model plus `Py
 Look at how `parser.get_format_instructions()` gets injected into the system prompt via `.partial()`. This is the mechanism that tells the model *how* to structure its final answer so the parser can actually parse it.
 
 ### 4. Agent executors
-`AgentExecutor` is the loop that actually runs the agent: call the model, check if it wants to use a tool, run the tool, feed the result back, repeat until the model produces a final answer. Setting `verbose=True` (as this project does) is the fastest way to actually *see* that loop happening — run it once with verbose output before changing anything.
+`AgentExecutor` is the loop that actually runs the agent: call the model, check if it wants to use a tool, run the tool, feed the result back, repeat until the model produces a final answer. `verbose` is set to `False` by default here for cleaner output, but temporarily flipping it to `True` in `main.py` is the fastest way to actually *see* that loop happening — try it once before changing anything else.
 
 ### 5. Handling inconsistent LLM output formats
-The `try`/`except` block in `main.py` handles the fact that agent output isn't always a plain string — sometimes it's a list of content blocks. This is a real, common gotcha when working with different model providers through LangChain, not a hypothetical edge case.
+The `try`/`except` block in `research()` handles the fact that agent output isn't always a plain string — sometimes it's a list of content blocks. This is a real, common gotcha when working with different model providers through LangChain, not a hypothetical edge case.
+
+### 6. Separating agent logic from presentation
+`research()` does the actual agent work and returns nothing directly usable by a UI on its own — it prints via `rich`. Notice that the parsing/validation logic (turning raw output into a `ResearchResponse`) is fully separate from the *display* logic (the `Panel`, the plain-text breakdown). That separation is what would make it straightforward to swap the terminal output for a Streamlit or Gradio UI later without touching the agent code at all.
 
 ## Suggested way to study this repo
 
-1. Run it once as-is with a simple query and read the `verbose=True` output closely — watch the agent decide to search, then decide to look something up on Wikipedia, then decide it has enough to answer.
+1. Temporarily set `verbose=True` on `AgentExecutor` and run it once with a simple query, reading the output closely — watch the agent decide to search, then decide to look something up on Wikipedia, then decide it has enough to answer. Set it back to `False` once you've seen it.
 2. Read `tools.py` end to end — it's short and each tool follows the same shape (a function + a `Tool` wrapper).
-3. Read `main.py` top to bottom, matching each piece (the Pydantic model, the prompt template, the agent, the executor) to what you observed in step 1.
+3. Read `main.py` top to bottom, matching each piece (the Pydantic model, the prompt template, the agent, the executor, the `research()` function, the main loop) to what you observed in step 1.
 4. Break something on purpose: comment out `wiki_tool` from the `tools` list and see how the agent's behavior and output change.
 5. Extend it: add a new tool (see `CONTRIBUTING.md`) — this is the fastest way to confirm you actually understand how the pieces connect.
 
