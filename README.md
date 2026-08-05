@@ -4,7 +4,7 @@
 
 ## What it does
 
-1. Runs as an interactive loop — ask multiple research questions in one session without restarting the script
+1. Runs as an interactive loop , ask multiple research questions in one session without restarting the script
 2. Uses an LLM-powered agent (Gemini `2.5-flash`) that can call tools as needed:
    - **Web search** (DuckDuckGo) for current, general information
    - **Wikipedia lookup** for background/reference information
@@ -100,6 +100,3 @@ The agent will search, reason about what it finds, and print a formatted panel p
   - More specific error handling (e.g. a clear message when `GOOGLE_API_KEY` is missing, rather than surfacing whatever the SDK raises)
   - Unit tests for the tools and the output-parsing logic
 
-## License
-
-[MIT](LICENSE)
